@@ -18,6 +18,10 @@ namespace VoipApplicationProject.Controllers
         {
             repo = _repo;
         }
+        public IActionResult Payment()
+        {
+            return View();
+        }
 
         #region "Get Cookies"
         public string GetCookie(string Value)
