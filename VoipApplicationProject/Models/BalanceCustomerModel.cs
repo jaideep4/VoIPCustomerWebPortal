@@ -8,9 +8,10 @@ namespace VoipApplicationProject.Models
     public class BalanceCustomerModel
     {
         public string BalanceCustomerID { get; set; }
-        public double BalanceAmount { get; set; }
+        public int BalanceAmount { get; set; }
         public TransactionType TranscationType { get; set; }
         public string CustomerId { get; set; }
     }
+    
 
 }

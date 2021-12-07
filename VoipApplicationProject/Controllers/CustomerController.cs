@@ -156,7 +156,7 @@ namespace VoipApplicationProject.Controllers
                         SetCookie("refreshtoken", Customer.refreshtoken, 600);
                     }     
 
-                    return RedirectToAction("Index", "Dashboard");
+                    return RedirectToAction("Billing", "Customer");
                 }
                 else
                 {

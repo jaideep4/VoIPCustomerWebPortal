@@ -18,9 +18,21 @@ namespace VoipApplicationProject.Controllers
         {
             repo = _repo;
         }
+        [HttpGet]
         public IActionResult Payment()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult Payment(PaymentModel paymentModel)
+        {
+            string customerId = GetCookie("CustomerId");
+
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Billing", "Customer");
+            }
+            return View(paymentModel);
         }
 
         #region "Get Cookies"

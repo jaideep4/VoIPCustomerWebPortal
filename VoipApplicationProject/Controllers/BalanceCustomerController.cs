@@ -40,6 +40,15 @@ namespace VoipApplicationProject.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult AddBalance(BillingModel billingModel)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Payment", "Subscription");
+            }
+            return View(billingModel);
+        }
 
         #region "Get Cookies"
         public string GetCookie(string Value)

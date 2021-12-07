@@ -1,35 +1,40 @@
-﻿@*
+﻿@model VoipApplicationProject.Models.BillingModel
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
     ViewData["Title"] = "ADD BALANCE";
+    var custTypeList = Enum.GetValues(typeof(VoipApplicationProject.Models.Balance));
 }
 <h1 style="text-align:center">Add Funds to your Motele.com account instantly  </h1>
 <h4 style="text-align:center">Select an amount to add to your account</h4>
-<div class="form-group row" style="text-align:center">
-    <div class="col-md-2">
-        <input name="18+" value="yes" id="18" type="radio">$50
-    </div>
-    <div class="col-md-2">
-        <input name="18+" value="yes" id="18" type="radio">$100
-    </div>
-    <div class="col-md-2">
-        <input name="18+" value="yes" id="18" type="radio">$150
-    </div>
-    <div class="col-md-2">
-        <input name="18+" value="yes" id="18" type="radio">$200
-    </div>
-    <div class="col-md-2">
-        <input name="18+" value="yes" id="18" type="radio">$250
-    </div>
-    <div class="col-md-2">
-        <input name="18+" value="yes" id="18" type="radio">$300
+<div class="row mt-3">
+    <div class="col-md-8 mx-auto text-center">
+       
+        @foreach (var value in custTypeList)
+        {
+        <div class="form-check form-check-inline" >
+            @{int something = (int)value; }
+            @Html.RadioButtonFor(Model => Model.Amount, something, new { @class = "RdbtnBalanceAmount" })
+            <label class="mx-2 mb-0" >@something.ToString()</label>
+        </div>
+        }   
     </div>
 </div>
+<br />
+<span asp-validation-for="Amount" class="text-danger"></span>    
 <h4 style="text-align:center">OR</h4>
 <br>
 <div style="text-align:center">
-    <input placeholder="ENTER AMOUNT($)">
-    <br><br>
-    <button type="submit" class="btn btn-primary">GENERATE PAYMENT LINK</button>
+    <form action="/Subscription/Payment">
+        <input  placeholder="ENTER AMOUNT($)" onkeypress="clearRadio()">
+        <br><br>   
+        <input type="submit" value="Go To Payment Page" class="btn btn-primary" />
+    </form>
+
 </div>
+<script>
+    function clearRadio() {
+        $(".RdbtnBalanceAmount").attr('disabled', 'disabled');
+    }
+</script>

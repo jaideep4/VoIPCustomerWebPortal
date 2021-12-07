@@ -19,5 +19,6 @@ namespace VoipApplicationProject.Repositories
         bool ResetPassword(CustomerModel customer);
         bool CreateTrialBalanceCustomers(string CustomerId);
         List<SubscriptionModel> GetSubscriptionList(string CustomerId);
+        
     }
 }

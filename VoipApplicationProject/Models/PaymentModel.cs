@@ -12,8 +12,8 @@ using System.Threading.Tasks;
         public string FullName { get; set; }
         [Required]
         [MinLength(16)]
-        [MaxLength(16)]
-        public int Card_No { get; set; }
+        [MaxLength(16, ErrorMessage = "Card Number Should be of 16 Digit")] 
+        public string Card_No { get; set; }
         [Required]
         public DateTime Expiry_Date { get; set; }   
     }
